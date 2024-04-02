@@ -1,0 +1,9 @@
+<?php
+
+if (in_array($from_id, $admins)) {
+    if ($text == "پنل" || $text == "🔙") {
+        $panelText = "به پنل ادمین خوش آمدید.";
+        SendMessage($chat_id, $text, "HTML", $userPanel);
+        $conn->query("UPDATE `{$table}` SET `step`='none' WHERE `id`='{$from_id}'LIMIT 1");
+    }
+}
