@@ -5,6 +5,8 @@ mysqli_query(
     "CREATE TABLE `{$table}` (
         `id` varchar(50) NOT NULL PRIMARY KEY,
         `step` varchar(50) NOT NULL,
+        `server location` varchar(50) NOT NULL,
+        `selected server` varchar(50) NOT NULL,
         `wallet balance` varchar(50) NOT NULL,
         `servers` TEXT NOT NULL,
         `ban` varchar(50) NOT NULL
@@ -22,6 +24,8 @@ mysqli_query(
 $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `{$table}` WHERE `id` = '{$from_id}' LIMIT 1"));
 $id = $user['id'];
 $step = $user['step'];
+$serverLocation = $user['server location'];
+$selectedServer = $user['selected server'];
 $walletBalance = $user['wallet balance'];
 $servers = $user['servers'];
 $ban = $user['ban'];

@@ -24,6 +24,9 @@ define('API_KEY', 'TOKEN'); // توکن ربات رو به جای عبارت TOK
 $table = "table-users"; // نام جدول شما در دیتابیس - حتما انگلیسی باشه
 $botTable = "table-bot"; // نام جدول دوم شما در دیتابیس - حتما انگلیسی باشه
 $admins = [1, 2, 3]; // آیدی عددی ادمین های ربات رو در این آرایه قرار بدید
+$chanel = "";
+$card = "";
+$cardName = "";
 //----------important files-------------
 include './telegram.php';
 include './db.php';
@@ -31,7 +34,7 @@ include './functions.php';
 include './keyboards.php';
 //--------------------------------------
 
-if ($tc == "private") {
+// if ($tc == "private") {
 //--------------------------------------
     if (!$botDB) {
         $defaultChanel = "https://t.me/Hector_Bots";
@@ -40,6 +43,6 @@ if ($tc == "private") {
 //--------------------------------------
 include './user-panel.php';
 include './admin-panel.php';
-}
+// }
 
 

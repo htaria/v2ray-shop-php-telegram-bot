@@ -1,18 +1,19 @@
 <?php
 
+
 $update = json_decode(file_get_contents('php://input'));
 $message = $update->message;
-$chat_id = isset($message->chat->id) ? $message->chat->id : $update->callback_query->message->chat->id;
-$message_id = isset($message->message_id) ? $message->message_id : $update->callback_query->message->message_id;
-$from_id = isset($message->from->id) ? $message->from->id : $update->callback_query->from->id;
-$link = "<a href='tg://user?id=$from_id'>$from_id</a>";
-$text = isset($message->text) ? $message->text : $update->callback_query->data;
+$chat_id = isset($update->message->chat->id) ? $update->message->chat->id : $update->callback_query->message->chat->id;
+$tc = $update->message->chat->type;
+$message_id = isset($message->message_id) ? $message->message_id : $update->callback_query->message->message_id;;
+$from_id = isset($update->message->from->id) ? $update->message->from->id : $update->callback_query->from->id;
 $text = isset($update->message->text) ? $update->message->text : $update->callback_query->data;
-$inlineBtnMessage = $update->callback_query->message->text;
+$textMessage = $update->message->text;
+
 $first_name = $message->from->first_name;
 $last_name = $message->from->last_name;
 $user_name = $message->from->username;
-$tc = $update->message->chat->type;
+$link = "<a href='tg://user?id=$from_id'>$from_id</a>";
 $sticker_id = $message->sticker->file_id;
 $video_id = $message->video->file_id;
 $voice_id = $message->voice->file_id;
@@ -21,21 +22,29 @@ $animation_id = $message->animation->file_id;
 $music_id = $message->audio->file_id;
 $photo0_id = $message->photo[0]->file_id;
 $cap = $message->caption;
-//--------------------
-$forward = $message->forward_from_chat;
-$forwardms = $message->forward_from_message_id;
-//--------------------
+//--------------------------------------
+
+//--------------------------------------
+$reply = $message->reply_to_message;
+$reply_Message_id = $reply->message_id;
+$reply_From_id = $reply->from->id;
+$reply_First_name = $reply->from->first_name;
+$reply_Username = $reply->from->username;
+$reply_Text = $reply->text;
+//--------------------------------------
+
 if (isset($update->callback_query)) {
     $callback_query = $update->callback_query;
     $data = $callback_query->data;
-    $callback_id = $callback_query->if;
     $chatId = $callback_query->message->chat->id;
     $fromId = $callback_query->from->id;
     $messageId = $callback_query->message->message_id;
     $firstName = $callback_query->from->first_name;
     $lastName = $callback_query->from->last_name;
     $username = $callback_query->from->username;
+    $callback_query_id0 = $callback_query->id;
 }
+
 //--------------------
 function bot($method, $datas = [])
 {
@@ -82,12 +91,13 @@ function SendMessage($chat_id, $text, $mode = null, $reply = null, $keyboard = n
     ]);
 }
 
-function sendphoto($chat_id, $photo, $caption)
+function sendphoto($chat_id, $photo, $caption, $mode = null)
 {
     return bot('sendphoto', [
         'chat_id' => $chat_id,
         'photo' => $photo,
         'caption' => $caption,
+        'parse_mode' => $mode,
     ]);
 }
 
@@ -120,9 +130,10 @@ function sendAnimation($chat_id, $animation, $caption)
     ]);
 }
 
-function DeleteMessage($chat_id, $msgid){
-    bot('DeleteMessage',[
-      'chat_id'=>$chat_id,
-      'message_id'=>$msgid
-      ]);
-    }
+function DeleteMessage($chat_id, $msgid)
+{
+    bot('DeleteMessage', [
+        'chat_id' => $chat_id,
+        'message_id' => $msgid
+    ]);
+}
