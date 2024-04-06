@@ -9,9 +9,16 @@ function stop($text)
         case '🏷 ○ برگشت به منوی اصلی':
             $a = "Yes";
             break;
+        case 'back':
+            $a = "Yes";
+            break;
+        case '❌ انصراف از خرید':
+            $a = "Yes";
+            break;
         case 'پنل':
             $a = "Yes";
             break;
+
         case '🔙':
             $a = "Yes";
             break;
@@ -119,7 +126,8 @@ function serversDescription($selectedServer)
     }
     return $a;
 }
-$serverDescription = serversDescription($selectedServer);
+$serverDescriptionKeyboard_1 = serversDescription($data);
+$serverDescriptionKeyboard_2 = serversDescription($selectedServer);
 
 //------------------------------
 function serverLocationDescription($serverLocation)

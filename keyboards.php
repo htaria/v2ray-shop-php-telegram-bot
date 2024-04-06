@@ -23,7 +23,7 @@ $serverLocationPanel = json_encode([
 
 $paymentMethods = json_encode([
     'inline_keyboard' => [
-        [['text' => "💳 کارت به کارت - $serverDescription[1]", 'callback_data' => "Card by card"]],
+        [['text' => "💳 کارت به کارت - $serverDescriptionKeyboard_1[1] تومان", 'callback_data' => "Card by card"]],
         [['text' => "🏅 پرداخت با کیف پول + جایزه", 'callback_data' => "wallet"]],
         [['text' => "🔙", 'callback_data' => "back"]],
     ]
@@ -31,7 +31,20 @@ $paymentMethods = json_encode([
 
 $cardByCard = json_encode([
     'inline_keyboard' => [
-        [['text' => "💳 کارت به کارت - $serverDescription[1]", 'callback_data' => "Card by card"]],
+        [['text' => "💳 کارت به کارت - $serverDescriptionKeyboard_2[1] تومان", 'callback_data' => "Card by card"]],
+        [['text' => "🔙", 'callback_data' => "back"]],
+    ]
+]);
+
+$rechargeWallet = json_encode([
+    'inline_keyboard' => [
+        [['text' => "شارژ کیف پول", 'callback_data' => "rechargeWallet"]],
+    ]
+]);
+
+$rechargeWalletByCard = json_encode([
+    'inline_keyboard' => [
+        [['text' => "💳 کارت به کارت", 'callback_data' => "Card by card"]],
         [['text' => "🔙", 'callback_data' => "back"]],
     ]
 ]);
