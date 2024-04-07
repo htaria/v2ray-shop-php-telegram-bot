@@ -1,5 +1,5 @@
 <?php
-
+//---------- User Panel ----------
 $userPanel = json_encode([
     'keyboard' => [
         [['text' => "🛍 خرید سرویس"]],
@@ -90,24 +90,6 @@ $netherlandsServers = json_encode([
     ]
 ]);
 
-
-$adminPanel = json_encode([
-    'keyboard' => [
-        [['text' => "🧑‍💻 مشاهده سرور های کاربر"], ['text' => "👤 ارسال سرور به کاربر"]],
-        [['text' => "🏷 ○ برگشت به منوی اصلی"]],
-    ],
-    'resize_keyboard' => true,
-    'remove_keyboard' => true
-]);
-
-$yesOrno = json_encode([
-    'keyboard' => [
-        [['text' => "خیر"], ['text' => "بله"]],
-    ],
-    'resize_keyboard' => true,
-    'remove_keyboard' => true
-]);
-
 $cancel = json_encode([
     'keyboard' => [
         [['text' => "❌ انصراف از خرید"]],
@@ -118,6 +100,25 @@ $cancel = json_encode([
 $back = json_encode([
     'keyboard' => [
         [['text' => "🏷 ○ برگشت به منوی اصلی"]],
+    ],
+    'resize_keyboard' => true,
+]);
+
+//---------- Admin Panel ----------
+
+$adminPanel = json_encode([
+    'keyboard' => [
+        [['text' => "🧑‍💻 مشاهده سرور های کاربر"], ['text' => "👤 ارسال سرور به کاربر"]],
+        [['text' => "💰 افزایش موجودی کیف پول کاربر"],['text' => "⚙️ تنظیم سرور تست"]],
+        [['text' => "🏷 ○ برگشت به منوی اصلی"]],
+    ],
+    'resize_keyboard' => true,
+    'remove_keyboard' => true
+]);
+
+$adminBack = json_encode([
+    'keyboard' => [
+        [['text' => "🔙"]],
     ],
     'resize_keyboard' => true,
 ]);

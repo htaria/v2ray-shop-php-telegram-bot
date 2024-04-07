@@ -16,7 +16,7 @@ mysqli_query(
 mysqli_query(
     $conn,
     "CREATE TABLE `{$botTable}` (
-        `bot` varchar(50) NOT NULL,
+        `bot` varchar(50) NOT NULL PRIMARY KEY,
         `test server` TEXT NOT NULL,
         `chanel` varchar(110) NOT NULL
         )"
